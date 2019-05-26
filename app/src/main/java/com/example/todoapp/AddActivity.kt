@@ -15,7 +15,7 @@ class AddActivity : AppCompatActivity() {
 
         val tasksDatabaseHelper = TasksDatabaseHelper(this)
 
-        AddButton.setOnClickListener { view -> val task = TaskModel(Add_task.text.toString(), "0")
+        AddButton.setOnClickListener { view -> val task = TaskModel(Add_task.text.toString(), other.text.toString())
             val result = tasksDatabaseHelper.insertTask(task)
 
             if(result){

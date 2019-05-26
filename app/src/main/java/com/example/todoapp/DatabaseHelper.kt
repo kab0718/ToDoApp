@@ -10,9 +10,9 @@ class TasksDatabaseHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_
     @Throws(SQLiteException::class)
     fun insertTask(task:TaskModel):Boolean{
         val db = writableDatabase
-        val values = ContentValues()
 
-        values.put(DBContract.TaskEntry.TABLE_NAME, task.name)
+        val values = ContentValues()
+        values.put(DBContract.TaskEntry.TASK_NAME, task.name)
         values.put(DBContract.TaskEntry.OTHER, task.other)
 
         val rowId = db.insert(DBContract.TaskEntry.TABLE_NAME,null,values)
@@ -38,8 +38,8 @@ class TasksDatabaseHelper(context:Context) : SQLiteOpenHelper(context, DATABASE_
         const val DATABASE_NAME = "TASKS.db"
 
         private const val SQL_CREATE_ENTRIES =
-                "CREATE TABLE" + DBContract.TaskEntry.TABLE_NAME + "(" +
-                        DBContract.TaskEntry.TASK_NAME + "TEXT," +
+                "CREATE TABLE " + DBContract.TaskEntry.TABLE_NAME + " (" +
+                        DBContract.TaskEntry.TASK_NAME + " TEXT ," +
                         DBContract.TaskEntry.OTHER + " TEXT)"
 
         private const val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS" + DBContract.TaskEntry.TABLE_NAME
