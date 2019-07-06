@@ -19,7 +19,7 @@ class AddActivity : AppCompatActivity() {
             val result = tasksDatabaseHelper.insertTask(task)
 
             if(result){
-                Toast.makeText(this,"new Task Added!", LENGTH_LONG).show()
+                Toast.makeText(this,"タスクを追加しました!", LENGTH_LONG).show()
             }
         }
 
