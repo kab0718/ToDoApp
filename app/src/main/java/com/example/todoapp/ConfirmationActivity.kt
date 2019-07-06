@@ -14,9 +14,9 @@ class ConfirmationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_confirmation)
 
         val TasksHelper = TasksDatabaseHelper(this)
-        val dataList = TasksHelper.readableDatabase.select(TasksDatabaseHelper.DATABASE_NAME).parseList<>
+        val dataList = TasksHelper.readableDatabase.select(TasksDatabaseHelper.DATABASE_NAME).parseList<ListData>(ListDataPerser())
 
-        list.adapter
+        list.adapter = Databa
 
         BackButton.setOnClickListener {
             val intent = Intent(application,MainActivity::class.java)
