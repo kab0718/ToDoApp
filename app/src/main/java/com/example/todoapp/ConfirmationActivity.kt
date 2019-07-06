@@ -3,7 +3,6 @@ package com.example.todoapp
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.ListView
 import kotlinx.android.synthetic.main.activity_confirmation.*
 import org.jetbrains.anko.db.select
 
@@ -14,9 +13,11 @@ class ConfirmationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_confirmation)
 
         val TasksHelper = TasksDatabaseHelper(this)
-        val dataList = TasksHelper.readableDatabase.select(TasksDatabaseHelper.DATABASE_NAME).parseList<ListData>(ListDataPerser())
+        val dataList = TasksHelper.readableDatabase.select(TasksDatabaseHelper.tableName).parseList<ListData>(ListDataPerser())
 
-        list.adapter = Databa
+        TaskList.adapter = TaskListAdapter(baseContext, R.layout.row).apply {
+            addAll(dataList)
+        }
 
         BackButton.setOnClickListener {
             val intent = Intent(application,MainActivity::class.java)
